@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
+    <title>Weather</title>
+</head>
+<body>
+    <!-- main section  -->
+    <section class="min-h-screen bg-blue-600 ">
+
+        <!-- content wrapper  -->
+        <div class=" flex flex-col items-center sm:w-1/2 mx-auto space-y-6 overflow-x-hidden sm:overflow-x-visible">
+
+            <!-- compulsory section  -->
+            <div class="mt-8 space-y-[50px] w-full flex flex-col items-center">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">Weather App</h1>
+                <div class="flex justify-evenly sm:justify-between w-full">
+                    <button class="text-[8px] sm:text-[10px] md:text-[16px] text-white font-bold  p-2 rounded-md bg-blue-400 hover:bg-blue-500 " id="yourweather">Your Weather</button>
+                    <button class="text-[8px] sm:text-[10px] md:text-[16px] text-white font-bold  p-2 rounded-md bg-blue-400 hover:bg-blue-500" id="searchweather">Search Weather</button>
+                </div>
+            </div>
+
+            <!-- search bar section  -->
+            <div class="hidden searchBar">
+                <div class="flex gap-1 sm:gap-3">
+                    <input type="search" placeholder="Enter The City" class=" px-3 rounded-lg text-[10px] sm:text-[16px] w-[200px] h-6 md:w-[400px] md:h-8 city">
+                    <button id="searchBtn"><img src="./images/search icon.png " class="w-[20px] md:w-[30px]"></button>
+                </div>
+            </div>
+
+            <!-- grant access section  -->
+            <div class="space-y-6 hidden grantAccess ">
+                <div class="flex flex-col items-center">
+                    <img src="./images/location image.png" class="sm:w-[20%] md:w-[30%]">
+                    <h3 class="font-extrabold md:text-5xl text-2xl">Grant Location Access</h3>
+                </div>
+                <div class="flex flex-col items-center gap-6">
+                    <p class="md:text-[16px] sm:text-[10px]">Press the Allow button to access your location.</p>
+                    <button class="sm:text-[10px] md:text-[16px] text-white font-bold  p-2 rounded-md bg-blue-400 hover:bg-blue-500 locationBtn">Location Access</button>
+                </div>
+            </div>
+
+            <!-- weather information section  -->
+            <div class="hidden weatherclass ">
+                <div class="flex flex-col gap-4 justify-center items-center">
+                    <!-- city and country flag  -->
+                    <div class="flex gap-3 ">
+                        <div class="text-white text-[14px] sm:text-xl md:text-3xl font-bold" id="cityname"></div>
+                        <img  class="w-[20px]  sm:w-[30px] md:w-[50px]" id="flag">
+                    </div>
+
+                    <!-- weather temperature  -->
+                    <div class="flex-flex-col gap-3 ">
+                        <p id="weatherdiscription" class="text-white text-[12px] sm:text-xl md:text-2xl font-bold text-center"></p>
+                        <img src="" class="w-[40px] sm:w-[60px] md:w-[100px]" id="weatherImg">
+                        <h2 id="temperature" class="text-white text-[10px] sm:text-[16px] md:text-xl font-bold text-center"></h2>
+                    </div>
+
+                    <!-- cards -->
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <!-- card 1 -->
+                        <div class="border-2 border-blue-400 rounded-md p-[5px] w-[100px] sm:w-[200px] flex flex-col items-center gap-1 sm:gap-3">
+                            <img src="./images/wind.png" class="w-[30px] sm:w-[50px]">
+                            <h2 class="text-white text-[14px] sm:text-[20px] font-bold">Wind Speed</h2>
+                            <p id="windspeed" class="text-white text-[12px] sm:text-xl font-bold"></p>
+                        </div>
+
+                        <!-- card 2 -->
+                        <div class="border-2 border-blue-400 rounded-md p-[5px] w-[100px] sm:w-[200px] flex flex-col items-center gap-1 sm:gap-3">
+                            <img src="./images/humidity.png" class="w-[30px] sm:w-[50px]">
+                            <h2 class="text-white text-[14px] sm:text-[20px] font-bold">Humidity</h2>
+                            <p id="humidity" class="text-white text-[12px] sm:text-xl font-bold"></p>
+                        </div>
+
+                        <!-- card 3 -->
+                        <div class="border-2 border-blue-400 rounded-md p-[5px] w-[100px] sm:w-[200px] flex flex-col items-center gap-1 sm:gap-3">
+                            <img src="./images/cloud.png" class="w-[30px] sm:w-[50px]">
+                            <h2 class="text-white text-[14px] sm:text-[20px] font-bold">Clouds</h2>
+                            <p id="clouds" class="text-white text-[12px] sm:text-xl font-bold"></p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- loading section  -->
+            <div class="hidden loading">
+                <div class="flex flex-col gap-3 justify-center items-center">
+                    <img src="https://media.giphy.com/media/5AtXMjjrTMwvK/giphy.gif" class="w-[40px] sm:w-[80px] md:w-[200px]">
+                    <h2 class="text-white sm:text-2xl md:text-4xl font-bold sm:font-extrabold tracking-wider">Loading</h2>
+                </div>
+            </div>
+
+            <!-- Error page invalid city name -->
+            <div class="py-4 sm:py-8 hidden error">
+                <h2 class="text-white text-[20px] sm:text-xl md:text-3xl font-bold">Invalid City Name</h2>
+            </div>
+        </div>
+    </section>
+    <script src="index.js"></script>
+</body>
+</html>
